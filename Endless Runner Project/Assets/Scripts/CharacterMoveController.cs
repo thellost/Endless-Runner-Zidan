@@ -114,7 +114,7 @@ public class CharacterMoveController : MonoBehaviour
 
         rig.velocity = velocityVector;
     }
-    private void GameOver()
+    public void GameOver()
     {
         // set high score
         score.FinishScoring();
@@ -125,6 +125,10 @@ public class CharacterMoveController : MonoBehaviour
         // show gameover
         gameOverScreen.SetActive(true);
 
+        //stop the player & animation
+        rig.velocity = new Vector2(0,0);
+        anim.enabled = false;
+        
         // disable this too
         this.enabled = false;
     }
