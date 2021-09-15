@@ -56,7 +56,6 @@ public class CharacterMoveController : MonoBehaviour
         // read input
         if (Input.GetAxis("Jump") == 1)
         {
-            Debug.Log("Jumped");
             if (isOnGround)
             {
                 isJumping = true;
@@ -88,10 +87,13 @@ public class CharacterMoveController : MonoBehaviour
         // raycast ground
         RaycastHit2D hit = Physics2D.Raycast(transform.position - new Vector3(.5f, 0, 0), Vector2.down, groundRaycastDistance, groundLayerMask);
         RaycastHit2D hit2 = Physics2D.Raycast(transform.position + new Vector3(.5f, 0, 0), Vector2.down, groundRaycastDistance, groundLayerMask);
+
+        Debug.Log(hit);
         if (hit || hit2)
         {
             if (!isOnGround && rig.velocity.y <= 0)
             {
+                Debug.Log(isOnGround);
                 isOnGround = true;
             }
         }
